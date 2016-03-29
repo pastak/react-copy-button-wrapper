@@ -2,7 +2,7 @@
 
 Component Wrapper for Copy to Clipboard Button with React
 
-## What works
+## How works
 
 ### Modern Browsers
 
