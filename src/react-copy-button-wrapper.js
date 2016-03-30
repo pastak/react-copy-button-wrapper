@@ -68,21 +68,31 @@ class ReactCopyButtonWrapper extends React.Component {
   }
 
   execCopy () {
-    const fakeElement = document.createElement('textarea')
-    fakeElement.style.fontSize = '12pt'
-    fakeElement.style.border = '0'
-    fakeElement.style.padding = '0'
-    fakeElement.style.margin = '0'
-    fakeElement.style.top = (window.pageYOffset || document.documentElement.scrollTop) + 'px'
-    fakeElement.style.position = 'fixed'
-    fakeElement.style[ document.documentElement.getAttribute('dir') === 'rtl' ? 'right' : 'left' ] = '-9999px'
-    fakeElement.setAttribute('readonly', '')
-    fakeElement.value = this.getCopyText()
-    document.body.appendChild(fakeElement)
-    const selectedText = select(fakeElement)
-    const result = document.execCommand('copy')
-    window.getSelection().removeAllRanges()
-    document.body.removeChild(fakeElement)
+    let selectedText = ''
+    if (browser.msie && browser.version < 9) {
+      try {
+        selectedText = this.getCopyText()
+        window.clipboardData.setData('text', selectedText)
+      } catch (e) {
+        window.prompt('Copy from here', selectedText)
+      }
+    } else {
+      const fakeElement = document.createElement('textarea')
+      fakeElement.style.fontSize = '12pt'
+      fakeElement.style.border = '0'
+      fakeElement.style.padding = '0'
+      fakeElement.style.margin = '0'
+      fakeElement.style.top = (window.pageYOffset || document.documentElement.scrollTop) + 'px'
+      fakeElement.style.position = 'fixed'
+      fakeElement.style[ document.documentElement.getAttribute('dir') === 'rtl' ? 'right' : 'left' ] = '-9999px'
+      fakeElement.setAttribute('readonly', '')
+      fakeElement.value = this.getCopyText()
+      document.body.appendChild(fakeElement)
+      selectedText = select(fakeElement)
+      const result = document.execCommand('copy')
+      window.getSelection().removeAllRanges()
+      document.body.removeChild(fakeElement)
+    }
     const copyEvent = this.generateCopyEvent(selectedText)
     if (result) {
       this.onAfterCopy(copyEvent)

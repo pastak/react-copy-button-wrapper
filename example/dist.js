@@ -19789,21 +19789,31 @@ var ReactCopyButtonWrapper = function (_React$Component) {
   }, {
     key: 'execCopy',
     value: function execCopy() {
-      var fakeElement = document.createElement('textarea');
-      fakeElement.style.fontSize = '12pt';
-      fakeElement.style.border = '0';
-      fakeElement.style.padding = '0';
-      fakeElement.style.margin = '0';
-      fakeElement.style.top = (window.pageYOffset || document.documentElement.scrollTop) + 'px';
-      fakeElement.style.position = 'fixed';
-      fakeElement.style[document.documentElement.getAttribute('dir') === 'rtl' ? 'right' : 'left'] = '-9999px';
-      fakeElement.setAttribute('readonly', '');
-      fakeElement.value = this.getCopyText();
-      document.body.appendChild(fakeElement);
-      var selectedText = select(fakeElement);
-      var result = document.execCommand('copy');
-      window.getSelection().removeAllRanges();
-      document.body.removeChild(fakeElement);
+      var selectedText = '';
+      if (browser.msie && browser.version < 9) {
+        try {
+          selectedText = this.getCopyText();
+          window.clipboardData.setData('text', selectedText);
+        } catch (e) {
+          window.prompt('Copy from here', selectedText);
+        }
+      } else {
+        var fakeElement = document.createElement('textarea');
+        fakeElement.style.fontSize = '12pt';
+        fakeElement.style.border = '0';
+        fakeElement.style.padding = '0';
+        fakeElement.style.margin = '0';
+        fakeElement.style.top = (window.pageYOffset || document.documentElement.scrollTop) + 'px';
+        fakeElement.style.position = 'fixed';
+        fakeElement.style[document.documentElement.getAttribute('dir') === 'rtl' ? 'right' : 'left'] = '-9999px';
+        fakeElement.setAttribute('readonly', '');
+        fakeElement.value = this.getCopyText();
+        document.body.appendChild(fakeElement);
+        selectedText = select(fakeElement);
+        var _result = document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        document.body.removeChild(fakeElement);
+      }
       var copyEvent = this.generateCopyEvent(selectedText);
       if (result) {
         this.onAfterCopy(copyEvent);
