@@ -2,6 +2,16 @@
 
 Component Wrapper for Copy to Clipboard Button with React
 
+## Usage
+
+`npm install react-copy-button-wrapper`
+
+### Example
+
+Please look at `/example` directory.
+
+Demo page is here: http://pastak.github.io/react-copy-button-wrapper/example/example.html
+
 ## How works
 
 ### Modern Browsers
