@@ -7,7 +7,6 @@
  * @property {function} onErrorCopy - function triggered error on copying
  */
 const React = require('react')
-const ReactDOM = require('react-dom')
 const ReactZeroClipboard = require('react-zeroclipboard')
 const select = require('select')
 const browser = require('bowser').browser
