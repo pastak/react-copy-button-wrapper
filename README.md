@@ -4,7 +4,13 @@ Component Wrapper for Copy to Clipboard Button with React
 
 ## Usage
 
-`npm install react-copy-button-wrapper`
+`% npm install react-copy-button-wrapper`
+
+```javascript
+<ReactCopyButtonWrapper text='test'>
+  <button>Copy</button>
+</ReactCopyButtonWrapper>
+```
 
 ### Example
 
