@@ -69,6 +69,7 @@ class ReactCopyButtonWrapper extends React.Component {
 
   execCopy () {
     let selectedText = ''
+    let result
     if (browser.msie && browser.version < 9) {
       try {
         selectedText = this.getCopyText()
@@ -89,7 +90,7 @@ class ReactCopyButtonWrapper extends React.Component {
       fakeElement.value = this.getCopyText()
       document.body.appendChild(fakeElement)
       selectedText = select(fakeElement)
-      const result = document.execCommand('copy')
+      result = document.execCommand('copy')
       window.getSelection().removeAllRanges()
       document.body.removeChild(fakeElement)
     }
