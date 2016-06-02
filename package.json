@@ -1,6 +1,6 @@
 {
   "name": "react-copy-button-wrapper",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Component Wrapper for Copy to Clipboard Button with React",
   "main": "dist/react-copy-button-wrapper.js",
   "scripts": {
