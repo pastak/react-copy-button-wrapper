@@ -1,6 +1,6 @@
 {
   "name": "react-copy-button-wrapper",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Component Wrapper for Copy to Clipboard Button with React",
   "main": "dist/react-copy-button-wrapper.js",
   "scripts": {
@@ -30,8 +30,10 @@
   },
   "dependencies": {
     "bowser": "^1.0.0",
-    "react": "^0.14.8",
     "react-zeroclipboard": "^3.0.0",
     "select": "^1.0.6"
+  },
+  "peerDependencies": {
+    "react": "0.14.x - 15.x"
   }
 }
