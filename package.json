@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "bowser": "^1.0.0",
+    "prop-types": "^15.5.10",
     "react-zeroclipboard": "^3.0.0",
     "select": "^1.0.6"
   },
