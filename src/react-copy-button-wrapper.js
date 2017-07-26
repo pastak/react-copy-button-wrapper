@@ -116,13 +116,13 @@ class ReactCopyButtonWrapper extends React.Component {
 }
 ReactCopyButtonWrapper.displayName = 'ReactCopyButtonWrapper'
 ReactCopyButtonWrapper.propTypes = {
-  text: React.PropTypes.string,
-  html: React.PropTypes.string,
-  selector: React.PropTypes.string,
-  domElement: React.PropTypes.object,
-  onAfterCopy: React.PropTypes.func,
-  onErrorCopy: React.PropTypes.func,
-  children: React.PropTypes.node
+  text: PropTypes.string,
+  html: PropTypes.string,
+  selector: PropTypes.string,
+  domElement: PropTypes.object,
+  onAfterCopy: PropTypes.func,
+  onErrorCopy: PropTypes.func,
+  children: PropTypes.node
 }
 
 module.exports = ReactCopyButtonWrapper
