@@ -10,6 +10,7 @@ const React = require('react')
 const ReactZeroClipboard = require('react-zeroclipboard')
 const select = require('select')
 const browser = require('bowser')
+const PropTypes = require('prop-types')
 
 class ReactCopyButtonWrapper extends React.Component {
   constructor (props) {
