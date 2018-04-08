@@ -20,7 +20,7 @@ class ReactCopyButtonWrapper extends React.Component {
   }
 
   supportedClipboardApi () {
-    if (browser.safari) return false
+    if (browser.safari && browser.version < 10) return false
     return true
   }
 
